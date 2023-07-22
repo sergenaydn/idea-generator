@@ -1,8 +1,23 @@
 version: "3.8"
 
 services:
-  database:
-    container_name: idea_generator
+  idea-generator:
+    container_name: generator_golang
+    environment:
+      - POSTGRES_USER=root
+      - POSTGRES_PASSWORD=root
+      - POSTGRES_DB=ideas
+    tty: true
+    build: .
+    ports:
+      - 3172:3172
+    restart: on-failure
+    volumes:
+            - .:/usr/src/app
+    depends_on:
+      - db
+  db:
+    container_name: db_container
     image: postgres:12.8
     restart: always
     environment:

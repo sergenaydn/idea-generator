@@ -1,8 +1,8 @@
 package main
 
 import (
-	"idea-generator-api/idea-generator/database"
-	"idea-generator-api/idea-generator/routes"
+	"idea-generator/database"
+	"idea-generator/routes"
 
 	"github.com/gin-gonic/gin"
 )

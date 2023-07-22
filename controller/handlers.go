@@ -1,8 +1,8 @@
 package controller
 
 import (
-	"idea-generator-api/idea-generator/database"
-	"idea-generator-api/idea-generator/models"
+	"idea-generator/database"
+	"idea-generator/models"
 	"net/http"
 
 	"github.com/gin-gonic/gin"
