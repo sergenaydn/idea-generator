@@ -1,0 +1,132 @@
+basePath: /
+definitions:
+  models.Idea:
+    properties:
+      id:
+        description: Id is the primary key of the idea, and it is marked with the
+          "primary_key" tag.
+        type: integer
+      idea:
+        description: IdeaName represents the name/title of the idea.
+        type: string
+      owner:
+        description: IdeaOwner represents the owner/creator of the idea.
+        type: string
+    type: object
+host: localhost:8080
+info:
+  contact: {}
+  description: Generate New Ideas and List Existing Ones
+  title: Idea Generator
+  version: "1.0"
+paths:
+  /idea:
+    get:
+      consumes:
+      - application/json
+      description: Returns the Data of All the Ideas
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            items:
+              $ref: '#/definitions/models.Idea'
+            type: array
+        "400":
+          description: Bad Request
+      summary: Get a list of all ideas
+      tags:
+      - Ideas
+    post:
+      description: Creates New Data of a New Idea
+      parameters:
+      - description: Idea Name and Owner please
+        in: body
+        name: EnterNameOwner
+        required: true
+        schema:
+          type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/models.Idea'
+      summary: Create Ideas
+      tags:
+      - Ideas
+  /idea/{id}:
+    delete:
+      consumes:
+      - application/json
+      description: Deletes the Data of an Idea By it's ID
+      parameters:
+      - description: idea ID
+        in: path
+        name: id
+        required: true
+        type: integer
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/models.Idea'
+        "400":
+          description: Bad Request
+      summary: Delete an Idea
+      tags:
+      - Ideas
+    get:
+      consumes:
+      - application/json
+      description: Returns the Data of an Idea By it's ID
+      parameters:
+      - description: idea ID
+        in: path
+        name: id
+        required: true
+        type: integer
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/models.Idea'
+        "400":
+          description: Bad Request
+      summary: Get An Idea by ID
+      tags:
+      - Ideas
+    put:
+      description: Updates Data of an Existing Idea
+      parameters:
+      - description: idea ID
+        in: path
+        name: id
+        required: true
+        type: integer
+      - description: Idea Name and Owner please
+        in: body
+        name: EnterNameOwner
+        required: true
+        schema:
+          type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/models.Idea'
+        "400":
+          description: Bad Request
+      summary: Update Ideas
+      tags:
+      - Ideas
+swagger: "2.0"

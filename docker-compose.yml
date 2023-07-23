@@ -10,7 +10,7 @@ services:
     tty: true
     build: .
     ports:
-      - 3172:3172
+      - 8080:8080
     restart: on-failure
     volumes:
             - .:/usr/src/app
