@@ -19,16 +19,16 @@ import (
 // @Router /idea [get]
 func GetAllIdeas(c *gin.Context) {
 	// Declare a variable to hold a slice of models.Idea structs.
-	var ideas []models.Idea
+	var idea []models.Idea
 
 	// Use the GORM library to query the database and retrieve all ideas.
 	// The Find method is used to retrieve all records from the "ideas" table and store them in the "ideas" variable.
-	if err := database.DB.Find(&ideas).Error; err != nil {
+	if err := database.DB.Find(&idea).Error; err != nil {
 		// If there was an error during the retrieval (e.g., database connection issue), respond with a 400 Bad Request status.
 		c.JSON(http.StatusBadRequest, nil)
 		return
 	}
 
 	// If the retrieval was successful, respond with the list of ideas in JSON format with a 200 OK status.
-	c.JSON(http.StatusOK, ideas)
+	c.JSON(http.StatusOK, idea)
 }
