@@ -14,7 +14,7 @@ var DB *gorm.DB
 func Init() {
 	// Define the data source name (DSN) for the PostgreSQL database.
 	// It contains the necessary connection details such as username, password, host, and database name.
-	dsn := "postgres://root:root@db_container:5432/ideas"
+	dsn := "postgres://root:root@localhost:5432/ideas"
 
 	// Attempt to establish a connection to the PostgreSQL database using the specified DSN.
 	// The gorm.Open function takes the database driver (postgres) and the DSN as arguments.

@@ -25,9 +25,9 @@ func GetIdeaByID(c *gin.Context) {
 	// Use the database package to query the database for an idea with the given ID
 	// The `c.Param("id")` extracts the "id" parameter from the request URL
 	// The retrieved idea will be stored in the `ideas` variable
-	if err := database.DB.Where("id = ?", c.Param("id")).Find(&ideas).Error; err != nil {
+	if err := database.DB.Where("id = ?", c.Param("id")).First(&ideas).Error; err != nil {
 		// If there was an error during the database query, respond with a 400 Bad Request status code and an empty response
-		c.JSON(http.StatusBadRequest, nil)
+		c.JSON(http.StatusBadRequest, "Cannot find idea")
 		return
 	}
 
